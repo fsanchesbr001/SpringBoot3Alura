@@ -1,8 +1,6 @@
 package br.com.alura.med.voll.api.paciente;
 
 import br.com.alura.med.voll.api.endereco.Endereco;
-import br.com.alura.med.voll.api.medico.DadosMedico;
-import br.com.alura.med.voll.api.medico.Especialidade;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -25,12 +23,32 @@ public class Paciente {
     private String cpf;
     @Embedded
     private Endereco endereco;
+    private Boolean ativo;
 
     public Paciente(DadosPaciente paciente) {
+        this.id = paciente.id();
         this.nome = paciente.nome();
         this.email = paciente.email();
         this.endereco = new Endereco(paciente.endereco());
         this.telefone = paciente.telefone();
         this.cpf = paciente.cpf();
+        this.ativo = paciente.ativo();
+    }
+
+    public void excluir() {
+        this.ativo = false;
+    }
+
+    public void atualizarInformacoes(DadosAtualizaPaciente dadosPaciente) {
+        if(dadosPaciente.nome()!=null){
+            this.nome = dadosPaciente.nome();
+        }
+        if(dadosPaciente.telefone()!=null){
+            this.telefone = dadosPaciente.telefone();
+        }
+        if(dadosPaciente.endereco()!=null){
+            this.endereco.atualizarInformacoes(dadosPaciente.endereco());
+        }
+
     }
 }
