@@ -1,6 +1,9 @@
 package br.com.alura.med.voll.api.controller;
 
-import br.com.alura.med.voll.api.paciente.*;
+import br.com.alura.med.voll.api.domain.paciente.DadosListaPaciente;
+import br.com.alura.med.voll.api.domain.paciente.Paciente;
+import br.com.alura.med.voll.api.domain.paciente.PacienteRepository;
+import br.com.alura.med.voll.api.domain.paciente.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -9,7 +12,6 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriBuilder;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
