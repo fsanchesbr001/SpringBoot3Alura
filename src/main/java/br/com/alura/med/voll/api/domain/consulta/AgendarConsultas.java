@@ -78,7 +78,7 @@ public class AgendarConsultas {
         if(lista==null){
             throw new ValidaConsultaException("Lista de Consultas Vazia");
         }
-        List<DadosDetalhamentoConsulta> saida = new ArrayList<DadosDetalhamentoConsulta>();
+        List<DadosDetalhamentoConsulta> saida = new ArrayList<>();
         for (Consulta item:lista ) {
             saida.add(new DadosDetalhamentoConsulta(item.getMedico().getId(),item.getPaciente().getId(),
                     item.getData(),item.getAtivo()));

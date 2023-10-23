@@ -17,7 +17,7 @@ public class ValidarMedicoAtivo implements ValidarAgendamentoConsulta{
             return;
         }
         var medicoSelecionado = medicoRepository.findById(dados.idMedico()).get();
-        if(medicoSelecionado!=null && !medicoSelecionado.getAtivo()){
+        if(!medicoSelecionado.getAtivo()){
             throw new ValidaConsultaException("Medico selecionado esta inativo.");
         }
     }

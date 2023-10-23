@@ -14,7 +14,7 @@ public class ValidarPacienteAtivo implements ValidarAgendamentoConsulta{
 
     public void validar(DadosAgendamentoConsulta dados){
         var pacienteSelecionado = pacienteRepository.findById(dados.idPaciente()).get();
-        if(pacienteSelecionado!=null && !pacienteSelecionado.getAtivo()){
+        if(!pacienteSelecionado.getAtivo()){
             throw new ValidaConsultaException("Paciente selecionado esta inativo.");
         }
     }
