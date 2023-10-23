@@ -1,4 +1,4 @@
-CREATE TABLE vollmed_api.pacientes (
+CREATE TABLE pacientes (
                                   id BIGINT auto_increment NOT NULL,
                                   nome varchar(255) NOT NULL,
                                   cpf varchar(11) NOT NULL,

@@ -1,1 +1,1 @@
-update vollmed_api.medicos set ativo=true;
+update medicos set ativo=true;

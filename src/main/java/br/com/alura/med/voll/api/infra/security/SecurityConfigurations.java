@@ -1,6 +1,5 @@
 package br.com.alura.med.voll.api.infra.security;
 
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,7 +26,8 @@ public class SecurityConfigurations {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         DefaultSecurityFilterChain filterChain = http.csrf(csrf -> csrf.disable())
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(ar->ar.requestMatchers(HttpMethod.POST,"/login").permitAll()
+                .authorizeHttpRequests(ar->ar.requestMatchers(HttpMethod.POST,"/login").permitAll())
+                .authorizeHttpRequests(ar->ar.requestMatchers("/v3/api-docs/**","/swagger-ui.html","/swagger-ui/**").permitAll()
                         .anyRequest().authenticated())
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
