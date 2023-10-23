@@ -1,1 +1,1 @@
-ALTER TABLE vollmed_api.medicos ADD ativo BOOL NOT NULL;
+ALTER TABLE medicos ADD ativo BOOL NOT NULL;
